@@ -2,13 +2,15 @@ import PySimpleGUI as sg
 import time
 import pyautogui
 
+#autoclicking part of the program
 def clicker():
     layout = [  [sg.Text('Enter the time between clicks(in seconds):'), sg.InputText('', size=(10,1), key='in1')],
                 [sg.Text('Enter the amount of clicks you want the program to click(leave blank to click until the program is closed): '), sg.InputText('', size=(10,1), key='in2')],
                 [sg.Button('Start Clicking!'), sg.Button('Close')]] 
 
     window = sg.Window('Autoclicker', layout).Finalize()
-    
+
+    # backend clicking part
     while True:
         event, values = window.read()
         if event == 'Close': 
@@ -29,6 +31,7 @@ def clicker():
             
     window.close()
 
+#text spamming part of the program
 def txtspam():
     layout = [  [sg.Text('Enter name of the file with the script you want to spam (not including extension, extension must be .txt):'), sg.InputText('', size=(10,1), key='in1')],
                 [sg.Text('Delay between messages (in seconds, must be decimal number (ex. 0.4, 1.0, etc.)):'), sg.InputText('', size=(10,1), key='in2')],
@@ -36,7 +39,8 @@ def txtspam():
                 [sg.Button('Start Spamming!'), sg.Button('Close')]] 
 
     window = sg.Window('Text Spammer', layout).Finalize()
-    
+
+    # backend spamming part
     while True:
         event, values = window.read()
         if event == 'Close': 
@@ -54,8 +58,10 @@ def txtspam():
 
     window.close()
 
+# program color theme
 sg.theme('Black')
 
+# main menu
 layout = [[sg.Text("Pick what you want to use:")], [sg.Button("Autoclicker")], [sg.Button("Text Spammer")], [sg.Button("Close")]]
 
 window = sg.Window("ClickNSpam", layout)
@@ -68,4 +74,5 @@ while True:
         clicker()
     if event == "Text Spammer":
         txtspam()
+
 window.close()
