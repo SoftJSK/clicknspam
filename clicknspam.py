@@ -16,17 +16,17 @@ def clicker():
         if event == 'Close': 
             break
         if event == 'Start Clicking!': 
-            a = int(values['in1'])
-            b = values['in2']
-            c = 0
+            timeBetweenClicks = float(values['in1'])
+            numberOfClicks = values['in2']
+            tempClicks = 0
             while True:
-                time.sleep(a)
+                time.sleep(timeBetweenClicks)
                 pyautogui.click()
                 # the part below is very messy,
                 # but it was the only way i could make it click forever if left blank
-                c = c + 1
-                d = str(c)
-                if d == b:
+                tempClicks = tempClicks + 1 # add one to the temporary number of clicks
+                tempClicksStr = str(tempClicks) # assign to temporary values
+                if tempClicksStr == numberOfClicks: # check if it has reached the number of click
                     break
             
     window.close()
